@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://djpatdkq1pusg"]
+
+[ext_resource type="Script" path="res://die.gd" id="1_hd61n"]
+[ext_resource type="FontFile" uid="uid://dowfwp8lbv1e7" path="res://Aclonica-Regular.ttf" id="1_spkgt"]
+
+[sub_resource type="Animation" id="Animation_svbfw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1284, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.888832]
+}
+
+[sub_resource type="Animation" id="Animation_co0uf"]
+resource_name = "def"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1284, 14), Vector2(164, 285), Vector2(526, 296)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.888832, 0.724999, -0.033114]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_viggp"]
+_data = {
+"RESET": SubResource("Animation_svbfw"),
+"def": SubResource("Animation_co0uf")
+}
+
+[node name="win" type="Node2D"]
+script = ExtResource("1_hd61n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1282.0
+offset_bottom = 702.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+offset_left = 1284.0
+offset_top = 14.0
+offset_right = 1566.0
+offset_bottom = 83.0001
+rotation = -0.888832
+theme_override_colors/font_color = Color(1, 0, 0.184314, 1)
+theme_override_fonts/font = ExtResource("1_spkgt")
+theme_override_font_sizes/font_size = 60
+text = "You Died"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/Label"]
+autoplay = "def"
+libraries = {
+"": SubResource("AnimationLibrary_viggp")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://dirknbfomi5fi"]
+
+[ext_resource type="Script" path="res://mainload.gd" id="1_fp5xv"]
+[ext_resource type="VideoStream" path="res://intro/Sequence-01-1.ogv" id="1_ucwpt"]
+
+[node name="mainload" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fp5xv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1294.0
+offset_bottom = 710.0
+color = Color(0, 0, 0, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_ucwpt")
+autoplay = true
+expand = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 18.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

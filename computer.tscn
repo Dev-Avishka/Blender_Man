@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq4hq3yt7yk14"]
+
+[ext_resource type="PackedScene" uid="uid://2vj3pg12in1c" path="res://cube_1.tscn" id="1_7d34c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kn2m"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ggso7"]
+material = SubResource("StandardMaterial3D_2kn2m")
+
+[node name="computer" type="Node3D"]
+
+[node name="cube1" parent="." instance=ExtResource("1_7d34c")]
+transform = Transform3D(2.71015, 0, 0, 0, 1.64293, 0, 0, 0, 0.186563, 0, 1.16654, 0)
+
+[node name="cube3" parent="." instance=ExtResource("1_7d34c")]
+transform = Transform3D(1.63888, 0, 0, 0, 1.04771, 0, 0, 0, 0.186563, 0, 1.16654, -0.224542)
+
+[node name="cube2" parent="." instance=ExtResource("1_7d34c")]
+transform = Transform3D(0.306427, 0, 0, 0, 0.611678, 0, 0, 0, 0.186563, 0, 0.132014, 0)
+
+[node name="cube4" parent="." instance=ExtResource("1_7d34c")]
+transform = Transform3D(0.798968, 0, 0, 0, 0.203599, 0, 0, 0, 0.186563, 0, -0.217892, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.27678, 0, 0, 0, 1.37692, 0, 0, 0, 0.196047, 0, 1.15374, 0.0567296)
+mesh = SubResource("BoxMesh_ggso7")

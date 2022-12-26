@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://csvv4la50nfom"]
+
+[ext_resource type="PackedScene" uid="uid://bk3pb41vy4gyu" path="res://Enemy/slender_man_slender_the_arrival/scene.gltf" id="1_amy50"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_xs1pq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nsiwg"]
+radius = 0.746665
+height = 2.98262
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k7ywq"]
+radius = 52.4203
+
+[node name="enemy" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_xs1pq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_nsiwg")
+
+[node name="scene" parent="." instance=ExtResource("1_amy50")]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0, 0.45417, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." groups=["enemy"]]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_k7ywq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1fu46aapeurp"]
+
+[ext_resource type="Script" path="res://Enemy/enemy2.gd" id="1_3do0y"]
+[ext_resource type="PackedScene" uid="uid://bk3pb41vy4gyu" path="res://Enemy/slender_man_slender_the_arrival/scene.gltf" id="2_fih68"]
+[ext_resource type="PackedScene" uid="uid://blj53sik44g5l" path="res://Enemy/blender/scene.gltf" id="3_t8omy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_16bs8"]
+radius = 0.472668
+height = 2.62995
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ukv0r"]
+radius = 0.646093
+height = 3.07719
+
+[node name="enemy" type="CharacterBody3D" groups=["jol"]]
+script = ExtResource("1_3do0y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.341982, 0)
+shape = SubResource("CapsuleShape3D_16bs8")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="scene" parent="." instance=ExtResource("2_fih68")]
+transform = Transform3D(-0.005, 0, -4.37114e-10, 0, 0.005, 0, 4.37114e-10, 0, -0.005, 0, 0.846256, 0)
+
+[node name="scene2" parent="scene" instance=ExtResource("3_t8omy")]
+transform = Transform3D(50, 0, 0, 0, 62.5, 0, 0, 0, 50, -3.24293e-06, 196.972, 37.0948)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.341982, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.318485, 0)
+shape = SubResource("CapsuleShape3D_ukv0r")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcwkomslimfnc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0d5w0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2q01j"]
+
+[node name="note1" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0686979, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0d5w0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2q01j")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-0.999956, -0.00844081, -0.00386825, -0.00290202, -0.11162, 0.993746, -0.0088198, 0.993714, 0.11159, 0, 0.736709, 0.360511)
+text = "thyme
+"
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(-0.999955, -0.00844081, -0.00386825, -0.00290202, -0.11162, 0.993746, -0.0088198, 0.993714, 0.11159, 0, 0.666659, 0.147615)
+text = "parsely
+"
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(-0.999955, -0.0084408, -0.00386825, -0.00290202, -0.11162, 0.993746, -0.0088198, 0.993714, 0.11159, 0, 0.583887, -0.103944)
+text = "Bay
+"

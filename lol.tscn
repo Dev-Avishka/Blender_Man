@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dww3x7x4g2nqu"]
+
+[ext_resource type="Script" path="res://pol.gd" id="1_jbejj"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_jbejj")
+Name = "Dev"
+age = 15

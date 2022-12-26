@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfs1gmixu8ru2"]
+
+[ext_resource type="PackedScene" uid="uid://2vj3pg12in1c" path="res://cube_1.tscn" id="1_xs8n2"]
+
+[node name="tabel" type="Node3D"]
+
+[node name="cube1" parent="." instance=ExtResource("1_xs8n2")]
+transform = Transform3D(5.29889, 0, 0, 0, 0.174389, 0, 0, 0, 2.74009, 0.0108557, 1.41468, 0.00535226)
+
+[node name="cube2" parent="." instance=ExtResource("1_xs8n2")]
+transform = Transform3D(0.315571, 0, 0, 0, 1.47497, 0, 0, 0, 0.384535, 2.17186, 0.62151, 0.888908)
+
+[node name="cube4" parent="." instance=ExtResource("1_xs8n2")]
+transform = Transform3D(0.315571, 0, 0, 0, 1.47497, 0, 0, 0, 0.384535, 2.17186, 0.62151, -0.989946)
+
+[node name="cube5" parent="." instance=ExtResource("1_xs8n2")]
+transform = Transform3D(0.315571, 0, 0, 0, 1.47497, 0, 0, 0, 0.384535, -2.26292, 0.62151, -0.989946)
+
+[node name="cube6" parent="." instance=ExtResource("1_xs8n2")]
+transform = Transform3D(0.315571, 0, 0, 0, 1.47497, 0, 0, 0, 0.384535, -2.26292, 0.62151, 0.993498)
+
+[node name="cube3" parent="." instance=ExtResource("1_xs8n2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0347142, 0.473563, 2.33104)
+
+[node name="cube7" parent="." instance=ExtResource("1_xs8n2")]
+transform = Transform3D(1, 0, 0, 0, 2.32594, 0, 0, 0, 0.252315, 0.0347142, 1.15047, 2.9671)
+
+[node name="cube8" parent="." instance=ExtResource("1_xs8n2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0347142, 0.473563, -2.30123)
+
+[node name="cube9" parent="." instance=ExtResource("1_xs8n2")]
+transform = Transform3D(-1, 0, -2.20581e-08, 0, 2.32594, 0, 8.74228e-08, 0, -0.252315, 0.0347142, 1.15047, -2.90861)

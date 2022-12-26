@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbw0n3avgx8dw"]
+
+[ext_resource type="Script" path="res://loading.gd" id="1_fjg2u"]
+[ext_resource type="FontFile" uid="uid://dowfwp8lbv1e7" path="res://Aclonica-Regular.ttf" id="2_lrokf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_snsmh"]
+line_spacing = 4.0
+font = ExtResource("2_lrokf")
+font_size = 100
+
+[sub_resource type="Animation" id="Animation_c1sli"]
+resource_name = "load"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": ["Loading", "Loading.", "Loading..", "Loading...", "Loading"]
+}
+
+[sub_resource type="Animation" id="Animation_2u4w3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Loading"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qktks"]
+_data = {
+"RESET": SubResource("Animation_2u4w3"),
+"load": SubResource("Animation_c1sli")
+}
+
+[node name="loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_fjg2u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1283.0
+offset_bottom = 695.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+offset_top = -3.0
+offset_right = 1284.0
+offset_bottom = 700.0
+text = "Loading"
+label_settings = SubResource("LabelSettings_snsmh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/Label"]
+autoplay = "load"
+libraries = {
+"": SubResource("AnimationLibrary_qktks")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
